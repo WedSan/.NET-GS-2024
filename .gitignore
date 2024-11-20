@@ -1,0 +1,70 @@
+# Ignore build output directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer database
+*.psess
+*.vsp
+*.vspscc
+
+# Windows Installer cache
+.vs2019/
+.vs2022/
+
+# Rider
+.idea/
+
+# User-specific files
+.vscode/
+
+# ASP.NET temporary files
+aspnet_client/
+
+# Tye files
+.tye/
+
+# Dotnet Core
+project.lock.json
+project.fragment.lock.json
+
+# ASP.NET Core development certificate (macOS)
+.cert/
+
+# npm packages
+node_modules/
+
+# VS Code workspace settings
+.vscode/
+
+# Azure Web App publish settings
+.publish/
+
+# User-specific settings for Visual Studio for Mac
+.vscode/
+
+# .NET Core debugging logs
+.vs/
+
+# JetBrains Rider config files
+.idea/
+
+# Microsoft Azure Functions runtime
+local.settings.json
+
+# OSX system files
+.DS_Store
+
+# Thumbnails
+Thumbs.db
