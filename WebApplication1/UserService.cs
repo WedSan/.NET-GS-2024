@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.exception;
 using WebApplication1.model;
 
 namespace WebApplication1;
@@ -36,12 +37,25 @@ public class UserService
         await _repository.SaveChangesAsync();
     }
 
-    public async Task<User?> GetUserByIdAsync(int userId)
+    public async Task<User> GetUserByIdAsync(int userId)
     {
         User? user = await _repository.Users.FindAsync(userId);
+        if (user == null)
+        {
+            throw new EntityNotFoundException("User not found");
+        }
         return user;
     }
 
+    public async Task<User> UpdateUserEmail(int userId, string newEmail)
+    {
+        User user = await GetUserByIdAsync(userId);
+        user.Email = newEmail;
+        _repository.Users.Update(user);
+        await _repository.SaveChangesAsync();
+        return user;
+    }
+    
     public async Task<List<User?>> GetUsersAsync(int pageNumber, int pageSize)
     {
         return await _repository.Users

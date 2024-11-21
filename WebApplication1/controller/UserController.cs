@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication1.DTO;
 using WebApplication1.mapper;
 using WebApplication1.model;
 
@@ -16,7 +17,7 @@ namespace WebApplication1.controller;
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser([FromBody] AddUserRequest request)
+        public async Task<ActionResult<UserEntityResponse>> CreateUser([FromBody] AddUserRequest request)
         {
             User userCreated = await _userService.CreateUserAsync(request.Name,
                 request.Email,
@@ -27,15 +28,21 @@ namespace WebApplication1.controller;
         }
 
         [HttpGet]
-        public async Task<ActionResult<User>> GetAllUsers(int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<UserEntityResponse>> GetAllUsers(int pageNumber = 1, int pageSize = 10)
         {
             List<User?> userList = await _userService.GetUsersAsync(pageNumber, pageSize);
 
             return Ok(UserMapper.ToDTO(userList));
-            
         }
 
-        [HttpDelete("/{userId}")]
+        [HttpPatch("{userId}")]
+        public async Task<ActionResult<UserEntityResponse>> UpdateUserEmail(int userId, [FromBody] UpdateUserEmailRequest request)
+        {
+            User userUpdated = await _userService.UpdateUserEmail(userId, request.newEmail);
+            return Ok(userUpdated);
+        }
+        
+        [HttpDelete("{userId}")]
         public async Task<ActionResult> DeleteUser(int  userId)
         {
            await _userService.DeleteUserAsync(userId);

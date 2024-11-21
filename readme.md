@@ -31,7 +31,8 @@ O sistema irá receber dados da conta de energia do usuário, como o valor mensa
 através disso, realizará os cálculos necessários para fornecer estimativas para o retorno de investimento, quantidade
 necessária de paineis solares entre outras informações pertinentes para a implementação da energia solar.
 
-
+## Diagrama Tabela
+![Alt text](https://i.ibb.co/C9TWSMP/Whats-App-Image-2024-11-13-at-21-02-52.jpg)
 ## Links dos Videos
 
 Link do PITCH - https://youtu.be/8vf6YciO0nc
